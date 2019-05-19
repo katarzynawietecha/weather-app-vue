@@ -13,8 +13,10 @@
           {{ city.name }}
         </router-link>
       </td>
-      <td>{{ city.temperature }}stC</td>
-      <td><button type="submit" class="btn btn-outline-danger w-100">Usuń</button></td>
+      <td>{{ city.temperature }}&deg;C</td>
+      <td><button type="submit" class="btn btn-outline-danger w-100">
+        <i class="fas fa-times-circle"></i> Usuń</button>
+      </td>
     </tr>
   </table>
 </template>
@@ -26,11 +28,19 @@ export default {
       cities: [
         {
           name: 'krakow',
-          temperature: 15
+          temperature: 10
         },
         {
           name: 'radom',
           temperature: 15
+        },
+        {
+          name: 'jasło',
+          temperature: 14
+        },
+        {
+          name: 'wadowice',
+          temperature: 19
         }
       ]
     }

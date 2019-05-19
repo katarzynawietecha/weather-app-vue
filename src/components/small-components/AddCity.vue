@@ -1,6 +1,8 @@
 <template>
   <form class="form-group pt-5">
-    <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname"/><button type="submit" class="btn btn-primary">Dodaj</button>
+    <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname"/><button type="submit" class="btn btn-primary">
+      <i class="fas fa-search-plus"></i> Dodaj
+    </button>
   </form>
 </template>
 
