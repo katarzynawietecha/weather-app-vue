@@ -1,0 +1,19 @@
+<template>
+  <form class="form-group pt-5">
+    <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname"/><button type="submit" class="btn btn-primary">Dodaj</button>
+  </form>
+</template>
+
+<style scoped>
+  input, button {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  input {
+    width: 70%;
+  }
+  button {
+    margin-left: 20px;
+    width: calc(30% - 20px);
+  }
+</style>

@@ -1,21 +1,41 @@
 <template>
   <div class="homepage">
-    Homepage
+    <div class="bg-light text-right">
+      <div class="container">
+        <button type="button" class="btn btn-outline-primary">
+          <router-link :to="{path: 'settings'}" class="p-2">Ustawienia</router-link>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <AddCity />
+      <hr />
+      <Cities />
+    </div>
   </div>
 </template>
 
 <script>
+import AddCity from '@/components/AddCity'
+import Cities from '@/components/Cities'
+
 export default {
-  name: 'HelloWorld',
+  name: 'Homepage',
   data () {
     return {
 
     }
+  },
+  components: {
+    AddCity,
+    Cities
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+  .container {
+    padding: 10px 0;
+  }
 </style>
