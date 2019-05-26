@@ -6,6 +6,16 @@
   </form>
 </template>
 
+<script>
+export default {
+  name: 'AddCity',
+  data () {
+    return {}
+  }
+}
+
+</script>
+
 <style scoped>
   input, button {
     display: inline-block;

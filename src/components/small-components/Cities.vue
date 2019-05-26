@@ -6,7 +6,7 @@
       <th>Średnia prognozowana temperatura</th>
       <th></th>
     </tr>
-    <tr v-for='(city, index) in cities' :key='index'>
+    <tr v-for='(city, index) in $store.state.cities' :key='index'>
       <td>{{ index + 1 }}</td>
       <td>
         <router-link :to="/details/+`${city.name}`">
@@ -14,7 +14,7 @@
         </router-link>
       </td>
       <td>{{ city.temperature }}&deg;C</td>
-      <td><button type="submit" class="btn btn-outline-danger w-100">
+      <td><button type="submit" @click='deleteCity(index)' class="btn btn-outline-danger w-100">
         <i class="fas fa-times-circle"></i> Usuń</button>
       </td>
     </tr>
@@ -24,25 +24,11 @@
 <script>
 export default {
   data () {
-    return {
-      cities: [
-        {
-          name: 'krakow',
-          temperature: 10
-        },
-        {
-          name: 'radom',
-          temperature: 15
-        },
-        {
-          name: 'jasło',
-          temperature: 14
-        },
-        {
-          name: 'wadowice',
-          temperature: 19
-        }
-      ]
+    return {}
+  },
+  methods: {
+    deleteCity (index) {
+      this.$store.state.cities.splice(index, 1)
     }
   }
 }
