@@ -13,7 +13,10 @@
           {{ city.name }}
         </router-link>
       </td>
-      <td>{{ city.temperature }}&deg;C</td>
+      <td>
+        <span v-if='$store.state.unit === "C"'>{{ city.Celsius }}&deg;C</span>
+        <span v-else>{{ city.Fahrenheit }}&deg;F</span>
+      </td>
       <td><button type="submit" @click='deleteCity(index)' class="btn btn-outline-danger w-100">
         <i class="fas fa-times-circle"></i> Usuń</button>
       </td>
@@ -28,7 +31,7 @@ export default {
   },
   methods: {
     deleteCity (index) {
-      this.$store.state.cities.splice(index, 1)
+      this.$store.commit('DELETE_CITY', index)
     }
   }
 }

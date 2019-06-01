@@ -1,17 +1,25 @@
 import Vue from 'vue'
-import Vuex from 'Vuex'
+import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const state = {
-  cities: [
-    {name: 'krakow', temperature: 10},
-    {name: 'radom', temperature: 15},
-    {name: 'jasło', temperature: 14},
-    {name: 'wadowice', temperature: 19}
-  ]
-}
-
 export default new Vuex.Store({
-  state
+  state: {
+    unit: 'C',
+    cities: []
+  },
+  mutations: {
+    ADD_CITY: (state, payload) => {
+      state.cities.push(payload)
+    },
+    DELETE_CITY: (state, index) => {
+      state.cities.splice(index, 1)
+    }
+  }
+
 })
+
+// {name: 'krakow', Celsius: 4, Fahrenhei: 10},
+// {name: 'radom', Celsius: 7, Fahrenhei: 60},
+// {name: 'jasło', Celsius: 3, Fahrenhei: 14},
+// {name: 'wadowice', Celsius: 4, Fahrenhei: 0}

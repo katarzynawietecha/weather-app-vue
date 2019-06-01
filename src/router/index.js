@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Homepage from '@/components/page-components/Homepage'
-import Details from '@/components/page-components/Details'
-import Settings from '@/components/page-components/Settings'
+import Homepage from '@/components/Homepage'
+import Details from '@/components/Details'
+import Settings from '@/components/Settings'
 
 Vue.use(Router)
 
