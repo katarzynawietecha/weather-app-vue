@@ -16,12 +16,16 @@
         <span class="col-xs-6 col-sm-3">Jednostka:</span>
         <form class="form-group col-xs-6 col-sm-9">
           <label>
-            <input type="radio" name="temp" value="C" checked />&deg;C
+            <input type="radio" name="unit" value="C" v-model='unit' />&deg;C
           </label>
           <label>
-            <input type="radio" name="temp" value="F" />&deg;F
+            <input type="radio" name="unit" value="F" v-model='unit' />&deg;F
           </label>
         </form>
+        <p>
+        $store.state.unit:  {{$store.state.unit}}<br />
+        unit: {{ unit}}
+        </p>
       </div>
       <hr class="m-0" />
       <div class="text-right">
@@ -36,6 +40,25 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Settings',
+  data () {
+    return {}
+  },
+  computed: {
+    unit: {
+      get () {
+        return this.$store.state.unit
+      },
+      set (selectedUnit) {
+        this.$store.commit('CHANGE_UNIT', selectedUnit)
+      }
+    }
+  }
+}
+</script>
 
 <style>
 .container {

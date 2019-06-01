@@ -14,6 +14,9 @@ export default new Vuex.Store({
     },
     DELETE_CITY: (state, index) => {
       state.cities.splice(index, 1)
+    },
+    CHANGE_UNIT: (state, payload) => {
+      state.unit = payload
     }
   }
 
