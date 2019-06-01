@@ -10,7 +10,9 @@
 export default {
   name: 'AddCity',
   data () {
-    return {}
+    return {
+      cityName: ''
+    }
   },
   methods: {
     addCity (cityName) {
@@ -20,10 +22,21 @@ export default {
         Fahrenheit: ''
       }
       this.$store.commit('ADD_CITY', newCity)
+      this.setNewLocalStorage()
+    },
+    setNewLocalStorage () {
+      var citiesString = []
+      for (var i = 0; i < this.$store.state.cities.length; i++) {
+        if (citiesString.length !== 0) {
+          citiesString += ',' + this.$store.state.cities[i].name
+        } else {
+          citiesString += this.$store.state.cities[i].name
+        }
+      }
+      localStorage.cities = citiesString
     }
   }
 }
-
 </script>
 
 <style scoped>

@@ -22,10 +22,6 @@
             <input type="radio" name="unit" value="F" v-model='unit' />&deg;F
           </label>
         </form>
-        <p>
-        $store.state.unit:  {{$store.state.unit}}<br />
-        unit: {{ unit}}
-        </p>
       </div>
       <hr class="m-0" />
       <div class="text-right">
@@ -47,6 +43,14 @@ export default {
   data () {
     return {}
   },
+  mounted () {
+    if (localStorage.unit) {
+      console.log('localStorage.unit exists')
+      this.$store.commit('GET_UNIT', localStorage.unit)
+    } else {
+      localStorage.unit = this.$store.state.unit
+    }
+  },
   computed: {
     unit: {
       get () {
@@ -54,6 +58,7 @@ export default {
       },
       set (selectedUnit) {
         this.$store.commit('CHANGE_UNIT', selectedUnit)
+        localStorage.unit = selectedUnit
       }
     }
   }

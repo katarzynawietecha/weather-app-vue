@@ -33,6 +33,28 @@ export default {
   methods: {
     deleteCity (index) {
       this.$store.commit('DELETE_CITY', index)
+      this.setNewLocalStorage()
+    },
+    setNewLocalStorage () {
+      var citiesString = []
+      for (var i = 0; i < this.$store.state.cities.length; i++) {
+        if (citiesString.length !== 0) {
+          citiesString += ',' + this.$store.state.cities[i].name
+        } else {
+          citiesString += this.$store.state.cities[i].name
+        }
+      }
+      localStorage.cities = citiesString
+    }
+  },
+  mounted () {
+    if (localStorage.cities) {
+      let citiesNames = localStorage.cities.split(',')
+      this.$store.commit('GET_CITIES', citiesNames)
+      console.log('if')
+    } else {
+      this.setNewLocalStorage()
+      console.log('else')
     }
   }
 }
