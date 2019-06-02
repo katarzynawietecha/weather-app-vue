@@ -36,31 +36,6 @@ export default {
       city: ''
     }
   }
-  // created () {
-  //   // fetch the data when the view is created and the data is
-  //   // already being observed
-  //   this.fetchData()
-  // },
-  // watch: {
-  //   // call again the method if the route changes
-  //   '$route': 'fetchData'
-  // },
-  // methods: {
-  //   fetchData () {
-  //     // this.error = this.post = null
-  //     // this.loading = true
-  //     // replace `getPost` with your data fetching util / API wrapper
-  //     get(this.$route.params.id, (err, data) => {
-  //       // this.loading = false
-  //       if (err) {
-  //         this.error = err.toString()
-  //       } else {
-  //         console.log(data)
-  //         this.city = data
-  //       }
-  //     })
-  //   }
-  // }
 }
 </script>
 
