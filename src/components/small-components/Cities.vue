@@ -38,23 +38,34 @@ export default {
       this.setNewLocalStorage()
     },
     setNewLocalStorage () {
-      var citiesString = []
-      for (var i = 0; i < this.$store.state.cities.length; i++) {
-        if (citiesString.length !== 0) {
-          citiesString += ',' + this.$store.state.cities[i].name
-        } else {
-          citiesString += this.$store.state.cities[i].name
-        }
-      }
-      localStorage.cities = citiesString
+      let citiesToStore = this.$store.state.cities
+      localStorage.setItem('cities', JSON.stringify(citiesToStore))
     }
   },
   mounted () {
     if (localStorage.cities) {
-      let citiesNames = localStorage.cities.split(',')
-      this.$store.commit('GET_CITIES', citiesNames)
+      // Get cities from localStorage (as string), parse as Object and add to store
+      let receivedCities = localStorage.getItem('cities')
+      this.$store.commit('GET_CITIES', JSON.parse(receivedCities))
     } else {
       this.setNewLocalStorage()
+    }
+    if (localStorage.unit) {
+      console.log('localStorage.unit exists')
+      this.$store.commit('GET_UNIT', localStorage.unit)
+    } else {
+      localStorage.unit = this.$store.state.unit
+    }
+  },
+  computed: {
+    unit: {
+      get () {
+        return this.$store.state.unit
+      },
+      set (selectedUnit) {
+        this.$store.commit('CHANGE_UNIT', selectedUnit)
+        localStorage.unit = selectedUnit
+      }
     }
   }
 }

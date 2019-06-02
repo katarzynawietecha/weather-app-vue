@@ -20,24 +20,8 @@ export default {
       this.fetchData(cityName)
     },
     setNewLocalStorage () {
-      var citiesString = []
-      for (var i = 0; i < this.$store.state.cities.length; i++) {
-        if (citiesString.length !== 0) {
-          citiesString += ',' + this.$store.state.cities[i].name
-        } else {
-          citiesString += this.$store.state.cities[i].name
-        }
-      }
-      localStorage.cities = citiesString
-      // var citiesString = []
-      // for (var i = 0; i < this.$store.state.cities.length; i++) {
-      //   if (citiesString.length !== 0) {
-      //     citiesString += ',' + this.$store.state.cities[i].name + '/' + this.$store.state.cities[i].Celsius + '/' + this.$store.state.cities[i].Fahrenheit + '/' + this.$store.state.cities[i].Latitude + '/' + this.$store.state.cities[i].Longitude
-      //   } else {
-      //     citiesString += this.$store.state.cities[i].name + '/' + this.$store.state.cities[i].Celsius + '/' + this.$store.state.cities[i].Fahrenheit + '/' + this.$store.state.cities[i].Latitude + '/' + this.$store.state.cities[i].Longitude
-      //   }
-      // }
-      // localStorage.cities = citiesString
+      let citiesToStore = this.$store.state.cities
+      localStorage.setItem('cities', JSON.stringify(citiesToStore))
     },
     fetchData (city) {
       let key = '5739b122d15a0b5a6dcee4e0854a42b0'
@@ -48,7 +32,7 @@ export default {
           let newCity = {}
           newCity.name = this.cityName
           newCity.Celsius = Math.round(response.list[0].main.temp * 10) / 10
-          newCity.Fahrenheit = Math.round((this.newCity.Celsius * 1.8000 + 32.00) * 10) / 10 // Celsius to Fahrenheit formula source: https://www.metric-conversions.org/temperature/celsius-to-fahrenheit.htm
+          newCity.Fahrenheit = Math.round((newCity.Celsius * 1.8000 + 32.00) * 10) / 10 // Celsius to Fahrenheit formula source: https://www.metric-conversions.org/temperature/celsius-to-fahrenheit.htm
           newCity.Longitude = response.city.coord.lon
           newCity.Latitude = response.city.coord.lat
           this.$store.commit('ADD_CITY', newCity)

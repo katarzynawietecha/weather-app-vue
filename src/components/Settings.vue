@@ -2,7 +2,7 @@
   <div>
     <div class="bg-light text-right">
       <div class="container">
-        <button type="button" class="btn btn-outline-primary" disabled>
+        <button type="button" class="btn btn-outline-primary settings" disabled>
           <router-link :to="{path: 'settings'}" class="p-2">
             <i class="fas fa-cog"></i> Ustawienia
           </router-link>
@@ -65,9 +65,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 .container {
   padding: 10px 0;
+  .settings a:hover {
+    text-decoration: none;
+    cursor: not-allowed;
+  }
 }
 label {
   display: block;

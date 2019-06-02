@@ -36,9 +36,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang='scss'>
   .container {
     padding: 10px 0;
+    a:hover {
+     text-decoration: none;
+   }
   }
   .fab {
     font-family: inherit;

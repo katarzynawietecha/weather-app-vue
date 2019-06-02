@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    unit: '',
+    unit: 'C',
     cities: []
   },
   mutations: {
@@ -19,10 +19,7 @@ export default new Vuex.Store({
       state.unit = payload
     },
     GET_CITIES: (state, payload) => {
-      state.cities = []
-      for (var i = 0; i < payload.length; i++) {
-        state.cities.push({name: payload[i]})
-      }
+      state.cities = payload
     },
     GET_UNIT: (state, payload) => {
       state.unit = payload
