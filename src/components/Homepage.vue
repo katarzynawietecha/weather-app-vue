@@ -1,14 +1,6 @@
 <template>
   <div class="homepage">
-    <div class="bg-light text-right">
-      <div class="container">
-        <button type="button" class="btn btn-outline-primary">
-          <router-link :to="{path: 'settings'}" class="p-2">
-            <i class="fas fa-cog"></i> Ustawienia
-          </router-link>
-        </button>
-      </div>
-    </div>
+    <SettingsButton />
     <div class="container">
       <AddCity />
       <hr />
@@ -18,17 +10,17 @@
 </template>
 
 <script>
-import AddCity from '@/components/small-components/AddCity'
-import Cities from '@/components/small-components/Cities'
+import SettingsButton from './small-components/SettingsButton'
+import AddCity from './small-components/AddCity'
+import Cities from './small-components/Cities'
 
 export default {
   name: 'Homepage',
   data () {
-    return {
-
-    }
+    return {}
   },
   components: {
+    SettingsButton,
     AddCity,
     Cities
   }

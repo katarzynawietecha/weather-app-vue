@@ -51,7 +51,6 @@ export default {
       this.setNewLocalStorage()
     }
     if (localStorage.unit) {
-      console.log('localStorage.unit exists')
       this.$store.commit('GET_UNIT', localStorage.unit)
     } else {
       localStorage.unit = this.$store.state.unit

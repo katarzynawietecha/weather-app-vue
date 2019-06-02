@@ -1,14 +1,6 @@
 <template>
   <div>
-    <div class="bg-light text-right">
-      <div class="container">
-        <button type="button" class="btn btn-outline-primary settings" disabled>
-          <router-link :to="{path: 'settings'}" class="p-2">
-            <i class="fas fa-cog"></i> Ustawienia
-          </router-link>
-        </button>
-      </div>
-    </div>
+    <SettingsButton class="settings" />
     <div class="container">
       <h2>Ustawienia</h2>
       <hr />
@@ -24,20 +16,15 @@
         </form>
       </div>
       <hr class="m-0" />
-      <div class="text-right">
-        <div class="container">
-          <button type="button" class="btn btn-outline-primary">
-            <router-link :to="'/'" class="p-2">
-              <i class="fas fa-arrow-circle-left"></i> Powrót
-            </router-link>
-          </button>
-        </div>
-      </div>
+      <BackButton/>
     </div>
   </div>
 </template>
 
 <script>
+import SettingsButton from './small-components/SettingsButton'
+import BackButton from './small-components/BackButton'
+
 export default {
   name: 'Settings',
   data () {
@@ -45,7 +32,6 @@ export default {
   },
   mounted () {
     if (localStorage.unit) {
-      console.log('localStorage.unit exists')
       this.$store.commit('GET_UNIT', localStorage.unit)
     } else {
       localStorage.unit = this.$store.state.unit
@@ -61,6 +47,10 @@ export default {
         localStorage.unit = selectedUnit
       }
     }
+  },
+  components: {
+    SettingsButton,
+    BackButton
   }
 }
 </script>
@@ -68,10 +58,10 @@ export default {
 <style lang='scss'>
 .container {
   padding: 10px 0;
-  .settings a:hover {
-    text-decoration: none;
-    cursor: not-allowed;
-  }
+}
+.settings a:hover {
+  text-decoration: none;
+  cursor: not-allowed;
 }
 label {
   display: block;
