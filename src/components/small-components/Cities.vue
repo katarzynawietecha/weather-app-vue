@@ -15,15 +15,14 @@
           </router-link>
         </td>
         <td>
-          <span v-if='$store.state.unit === "C"'>{{ city.Celsius }}&deg;C</span>
-          <span v-else>{{ city.Fahrenheit }}&deg;F</span>
+          <span v-if='$store.state.unit === "F"'>{{ city.Fahrenheit }}&deg;F</span>
+          <span v-else>{{ city.Celsius }}&deg;C</span>
         </td>
         <td><button type="submit" @click='deleteCity(index)' class="btn btn-outline-danger w-100">
           <i class="fas fa-times-circle"></i> Usuń</button>
         </td>
       </tr>
     </table>
-    <p>Celsius: {{Celsius}}<br />Fahrenheit: {{Fahrenheit}}<br />Latitude: {{Latitude}}<br />Longitude: {{Latitude}}</p>
   </div>
 </template>
 
@@ -31,31 +30,9 @@
 export default {
   name: 'Cities',
   data () {
-    return {
-      Celsius: '',
-      Fahrenheit: '',
-      Latitude: '',
-      Longitude: ''
-    }
-  },
-  created () {
-    this.fetchData()
+    return {}
   },
   methods: {
-    fetchData () {
-      let city = 'London'
-      let key = '5739b122d15a0b5a6dcee4e0854a42b0'
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&units=metric&appid=${key}`) //Celsius     // fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&units=imperal&appid=${key}`) //Fahrenheit
-      .then(response => response.json())
-      .then(response => {
-        this.Celsius = Math.round(response.list[0].main.temp * 10) / 10
-        this.Fahrenheit = Math.round((this.Celsius * 1.8000 + 32.00)* 10) / 10  //Celsius to Fahrenheit formula source: https://www.metric-conversions.org/temperature/celsius-to-fahrenheit.htm
-        this.Longitude = response.city.coord.lon
-        this.Latitude = response.city.coord.lat
-      }, error => {
-        console.log(error)
-      })
-    },
     deleteCity (index) {
       this.$store.commit('DELETE_CITY', index)
       this.setNewLocalStorage()

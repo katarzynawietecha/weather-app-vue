@@ -5,11 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    unit: 'F',
-    cities: [
-      {name: 'wadowice', Celsius: 4, Fahrenheit: 0},
-      {name: 'krakow', Celsius: 4, Fahrenheit: 10}
-    ]
+    unit: '',
+    cities: []
   },
   mutations: {
     ADD_CITY: (state, payload) => {
