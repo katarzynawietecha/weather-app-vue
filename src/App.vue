@@ -10,5 +10,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.container {
+  padding: 10px 0;
+  @media(max-width: 576px){
+    padding: 10px 5px;
+  }
+}
 </style>

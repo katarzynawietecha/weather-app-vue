@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  name: 'BackButton',
-  data () {
-    return {}
-  }
+  name: 'BackButton'
 }
 </script>

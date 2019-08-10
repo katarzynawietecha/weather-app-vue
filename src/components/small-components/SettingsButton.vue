@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  name: 'SettingsButton',
-  data () {
-    return {}
-  }
+  name: 'SettingsButton'
 }
 </script>

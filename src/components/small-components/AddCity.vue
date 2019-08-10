@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="form-group pt-5">
+    <form class="form-group pt-1 pt-sm-5">
       <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname" v-model="cityName" /><button type="submit" class="btn btn-primary" @click="addCity(cityName)">
         <i class="fas fa-search-plus"></i> Dodaj
       </button>
@@ -74,16 +74,27 @@ export default {
 }
 </script>
 
-<style scoped>
-  input, button {
-    display: inline-block;
-    vertical-align: middle;
-  }
+<style lang="scss" scoped>
   input {
     width: 70%;
   }
   button {
     margin-left: 20px;
     width: calc(30% - 20px);
+  }
+  input, button {
+    display: inline-block;
+    vertical-align: middle;
+    @media(max-width: 576px) {
+      display: block;
+      width: 90%;
+      margin: 10px 5%;
+    }
+  }
+  .alert {
+    @media(max-width: 576px) {
+      width: 90%;
+      margin: 10px 5%;
+    }
   }
 </style>

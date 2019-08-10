@@ -1,10 +1,10 @@
 <template>
   <div>
-    <SettingsButton class="settings" />
+    <SettingsButton class="settings__button" />
     <div class="container">
       <h2>Ustawienia</h2>
       <hr />
-      <div class="row">
+      <div class="row settings__content">
         <span class="col-xs-6 col-sm-3">Jednostka:</span>
         <form class="form-group col-xs-6 col-sm-9">
           <label>
@@ -27,9 +27,6 @@ import BackButton from './small-components/BackButton'
 
 export default {
   name: 'Settings',
-  data () {
-    return {}
-  },
   mounted () {
     if (localStorage.unit) {
       this.$store.commit('GET_UNIT', localStorage.unit)
@@ -55,15 +52,20 @@ export default {
 }
 </script>
 
-<style lang='scss'>
-.container {
-  padding: 10px 0;
+<style lang='scss' scoped>
+.settings__button {
+  a:hover {
+    text-decoration: none;
+    cursor: not-allowed;
+  }
 }
-.settings a:hover {
-  text-decoration: none;
-  cursor: not-allowed;
+.settings__content, h2  {
+  @media(max-width: 576px){
+    padding: 0 10px;
+  }
 }
 label {
   display: block;
 }
+
 </style>

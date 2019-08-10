@@ -16,9 +16,6 @@ import Cities from './small-components/Cities'
 
 export default {
   name: 'Homepage',
-  data () {
-    return {}
-  },
   components: {
     SettingsButton,
     AddCity,
@@ -27,10 +24,8 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
   .container {
-    padding: 10px 0;
     a:hover {
      text-decoration: none;
    }

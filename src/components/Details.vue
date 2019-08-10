@@ -75,13 +75,15 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.container {
-  padding: 10px 0;
-  table {
-    tr:nth-child(2), tr:nth-child(3){
-      td {
-        border: none;
-      }
+table {
+  tr:nth-child(2), tr:nth-child(3){
+    td {
+      border: none;
+    }
+  }
+  th, td {
+    @media(max-width: 360px){
+      padding-left: 10px;
     }
   }
 }

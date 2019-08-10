@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table>
+    <table class="cities">
       <tr>
         <th>#</th>
         <th>Miasto</th>
@@ -73,13 +73,37 @@ export default {
 <style lang="scss">
 table {
   width: 100%;
-
-  tr {
-
-  }
   th, td {
     padding: 5px 20px;
     border-bottom: 1px solid lightgray;
+    @media(max-width: 576px){
+      &:nth-child(3) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      &:last-child {
+        padding-left: 0;
+      }
+    }
+    @media(max-width: 360px){
+      &:first-child {
+        padding-left: 10px;
+        padding-right: 4px;
+      }
+      &:nth-child(2) {
+        padding-left: 2px;
+        padding-right: 3px;
+      }
+    }
+  }
+}
+table.cities {
+  th:nth-child(3), td:nth-child(3) {
+    padding-left: 0;
+    padding-right: 0;
+    @media(max-width: 360px){
+      text-align: center;
+    }
   }
 }
 </style>
