@@ -1,6 +1,33 @@
 # weather-app-vue
 
-Single-page application, which will display the average forecasted temperature for the next 5 days for selected cities.
+Single-page application, which display the average forecasted temperature for selected cities.
+
+
+**Demo**
+
+Homepage:
+
+![screenshot of weather-app-vue](/src/assets/weather-app-vue1.jpg)
+
+
+Settings:
+
+![screenshot of weather-app-vue](/src/assets/weather-app-vue2.jpg)
+
+
+Details:
+
+![screenshot of weather-app-vue](/src/assets/weather-app-vue3.jpg)
+
+
+**Technologies Used**
+
+* HTML,
+* SCSS,
+* Bootstrap,
+* JavaScript,
+* Vue.js.
+
 
 ## Build Setup
 

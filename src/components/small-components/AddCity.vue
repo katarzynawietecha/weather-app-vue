@@ -1,23 +1,32 @@
 <template>
-  <form class="form-group pt-5">
-    <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname" v-model="cityName" /><button type="submit" class="btn btn-primary" @click="addCity(cityName)">
-      <i class="fas fa-search-plus"></i> Dodaj
-    </button>
-  </form>
+  <div>
+    <form class="form-group pt-5">
+      <input type="text" placeholder="Nazwa miasta" class="form-control" id="cityname" v-model="cityName" /><button type="submit" class="btn btn-primary" @click="addCity(cityName)">
+        <i class="fas fa-search-plus"></i> Dodaj
+      </button>
+    </form>
+    <Error :errorMessage='errorMessage' />
+  </div>
 </template>
 
 <script>
+import Error from './Error'
+
 export default {
   name: 'AddCity',
   data () {
     return {
       cityName: '',
-      newCity: {}
+      newCity: {},
+      errorMessage: ''
     }
   },
   methods: {
     addCity (cityName) {
-      this.fetchData(cityName)
+      this.checkCity(cityName)
+      setTimeout(() => {
+        this.resetForm()
+      }, 100)
     },
     setNewLocalStorage () {
       let citiesToStore = this.$store.state.cities
@@ -40,7 +49,27 @@ export default {
         }, error => {
           console.log(error)
         })
+    },
+    checkCity (cityName) {
+      let isCityUnique = true
+      this.errorMessage = false
+      for (let i = 0; i < this.$store.state.cities.length; i++) {
+        if (this.$store.state.cities[i].name.toLowerCase() === cityName.toLowerCase()) {
+          this.errorMessage = 'Miasto ' + cityName + ' jest już na liście.'
+          isCityUnique = false
+          i = this.$store.state.cities.length
+        }
+      }
+      if (isCityUnique === true) {
+        this.fetchData(cityName)
+      }
+    },
+    resetForm () {
+      document.getElementById('cityname').value = ''
     }
+  },
+  components: {
+    Error
   }
 }
 </script>
